@@ -2,7 +2,7 @@
   "name": "unit_3_project",
   "version": "1.0.0",
   "description": "",
-  "main": "routes/index.js",
+  "main": "server.js",
   "engines": {
     "node": "11.6.0"
   },
