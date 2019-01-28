@@ -1,0 +1,21 @@
+const express = require('express')
+const router = express.Router()
+const bookController = require('../controllers/bookController')
+const chapterController = require('../controllers/chapterController')
+
+
+router.get('/', bookController.index)
+router.post('/', bookController.create)
+router.get('/new', bookController.new)
+router.get('/:bookId', bookController.show)
+router.get('/:bookId/edit', bookController.edit)
+router.patch('/:bookId', bookController.update)
+router.delete('/:bookId', bookController.delete)
+
+router.get('/:bookId/chapters', chapterController.index)
+router.get('/:bookId/chapters/new', chapterController.new)
+router.post('/:bookId/chapters', chapterController.create)
+router.get('/:bookId/chapters/:chaptersId', chapterController.show)
+router.get('/:bookId/chapters/:chaptersId/edit', chapterController.edit)
+router.patch('/:bookId/chapters/:chaptersId', chapterController.update)
+router.delete('/:bookId/chapters/:chaptersId', chapterController.delete)
