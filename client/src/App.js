@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Homepage from './components/Homepage'
-// import Bookpage from './components/Bookpage';
+import Bookpage from './components/Bookpage';
 // import Chapterpage from './components/Chapterpage';
 
 class App extends Component {
@@ -12,6 +12,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/books" component={Homepage} />
+            <Route exact path="/books/:bookId" component={Bookpage}/>
           </Switch>
         </Router>
       </div>
