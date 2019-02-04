@@ -35,7 +35,7 @@ class chapter extends Component {
     deletechapter = (event, chapterId) => {
         event.preventDefault()
         console.log(chapterId)
-        axios.delete(`/api/books/${bookId}/${chapterId}`).then(() => {
+        axios.delete(`/api/books/${bookId}/chapters`).then(() => {
             this.props.getNovel()
         })
     }

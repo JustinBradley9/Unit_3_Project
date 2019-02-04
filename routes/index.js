@@ -11,9 +11,9 @@ router.patch('/books/:bookId', bookController.update)
 router.delete('/books/:bookId', bookController.delete)
 
 router.get('/books/:bookId', chapterController.index)
-router.get('/books/:bookId/:chapterId', chapterController.show)
-router.delete('/books/:bookId/:chapterId', chapterController.delete)
-router.patch('/books/:bookId/:chapterId', chapterController.update)
-router.post('/books/:bookId/chapterId', chapterController.create)
+router.get('/books/:bookId/chapters', chapterController.show)
+router.delete('/books/:bookId/chapters', chapterController.delete)
+router.patch('/books/:bookId/chapters', chapterController.update)
+router.post('/books/:bookId/chapters', chapterController.create)
 
 module.exports = router
