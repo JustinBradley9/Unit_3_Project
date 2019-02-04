@@ -17,7 +17,7 @@ const chapter2 = new Chapter({
 const mainBook = new Book({
     title: "Lord of evil",
     bookPic: "Don't got one",
-    author: "Justin Bradley",
+    author: "Jean Grey",
     description: "Story that will probably not be finished",
     chapters: [chapter1, chapter2]
 })

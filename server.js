@@ -5,7 +5,7 @@ const router = require('./routes/index')
 
 app.use(express.json());
 app.use(express.static(__dirname + '/client/build/'))
-app.use('/', router)
+app.use('/api', router)
 app.get('/', (req, res) => {
 res.sendFile(__dirname + '/client/build/index.html')
 })

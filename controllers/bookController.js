@@ -1,54 +1,37 @@
-Book = require("../models/Book")
-Character = require("../models/Character")
+const Book = require('../models/Book')
 
-
-const BookController = {
+const bookController = {
     index: (req, res) => {
-        Book.find({}).then(books => {
-            res.render('apps/index', { books})
-        })
-    },
-    new: (req, res) => {
-        res.render("apps/new")
-    },
-    create: (req, res) => {
-        console.log(req.body)
-        Book.create({
-            title: req.body.title,
-            author: req.body.author,
-            bookPic: req.body.bookPic,
-            chapters: req.body.chapters
-
-        }).then(newBook => {
-            res.redirect('/')
-        })
+        Book.find({})
+            .then((books) => {
+                res.send(books)
+            })
     },
     show: (req, res) => {
-      const BookId = req.params.id
-      Book.findById(BookId).populate('characters').then((Book) => {
-        console.log(Book)
-        res.render('apps/show', { Book })
-      })
-    },
-    edit: (req, res) => {
-        const BookId = req.params.id
-        // console.log(BookId)
-        res.render('apps/edit', {BookId})
+        Book.findById(req.params.bookId).populate('chapters')
+            .then((book) => {
+                res.send(book)
+            })
     },
     update: (req, res) => {
-        const BookId = req.params.id
-        Book.findByIdAndUpdate(BookId, req.body, {new: true}).then(() => {
-            res.redirect(`/${BookId}`)
-        })
+        Book.findByIdAndUpdate(req.params.bookId, req.body)
+            .then((updatedBook) => {
+                updatedBook.save()
+                res.send(updatedBook)
+            })
     },
     delete: (req, res) => {
-        const BookId = req.params.id
-        Book.findByIdAndRemove(BookId).then(() => {
-            res.redirect('/')
-        })
+        Book.findByIdAndDelete(req.params.bookId)
+            .then(() => {
+                res.send(200)
+            })
+    },
+    create: (req, res) => {
+        Book.create(req.body)
+            .then((book) => {
+                res.send(book)
+            })
     }
 }
 
-
-
-module.exports = BookController
+module.exports = bookController
